@@ -1,3 +1,7 @@
+html, body,.ant-row,.menu-area,.chat-menu,#root,.ant-menu{
+  height: 100% !important
+}
+
 body {
   margin: 0;
   padding: 0;

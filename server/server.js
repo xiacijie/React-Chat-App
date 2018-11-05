@@ -1,8 +1,14 @@
 const server = require("http").createServer();
 const io = require("socket.io")(server);
 
-io.on("connection", client =>{
+io.on("connection", socket =>{
     console.log("connect!");
+
+    socket.emit("message","fuucl");
+    socket.on("message", data =>{
+        socket.emit("message",data);
+    })
+
 });
 
 server.listen(3001, err =>{
