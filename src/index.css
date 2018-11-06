@@ -1,5 +1,6 @@
-html, body,.ant-row,.menu-area,.chat-menu,#root,.ant-menu{
-  height: 100% !important
+html, body,.ant-row,.menu-area,.chat-menu,#root,.ant-menu,.chat-area{
+  height: 100% !important;
+  width: 100%;
 }
 
 body {

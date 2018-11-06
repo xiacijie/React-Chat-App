@@ -4,9 +4,9 @@ const io = require("socket.io")(server);
 io.on("connection", socket =>{
     console.log("connect!");
 
-    socket.emit("message","fuucl");
     socket.on("message", data =>{
-        socket.emit("message",data);
+        console.log(data);
+        io.emit("message",data);
     })
 
 });
