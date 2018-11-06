@@ -1,6 +1,6 @@
 
 # React-Chat-App
-A real time chatting application built by React.js and Socket.io
+A real time chatting application inspired by Slack
 ---------------------------------------------
 
 
