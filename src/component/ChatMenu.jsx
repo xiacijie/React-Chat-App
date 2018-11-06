@@ -31,7 +31,7 @@ class ChatMenu extends Component{
                     >
                     <Menu.Item>Hello! {this.props.name}</Menu.Item>
                     <SubMenu key="sub1" title={<span><Icon type="appstore" /><span>Channel</span></span>}>
-                        {rooms.map((val,index) =><Menu.Item key={index+""}>#{`${val}`}</Menu.Item> )}
+                        {rooms.map((val,index) =><Menu.Item onClick={this.props.switch.bind(this,val)} key={index+""}>#{`${val}`}</Menu.Item> )}
                     </SubMenu>
                     <SubMenu key="sub2" title={<span><Icon type="mail" /><span>Direct Messages</span></span>}>
 

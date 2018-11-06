@@ -11,8 +11,13 @@ export default function(){
         socket.emit("message",message);
     }
 
+    function joinRoom(room) {
+        socket.emit("join",room);
+    }
+
     return {
         receiveMessage: receiveMessage,
-        sendMessage:sendMessage
+        sendMessage:sendMessage,
+        joinRoom: joinRoom
     }
 }

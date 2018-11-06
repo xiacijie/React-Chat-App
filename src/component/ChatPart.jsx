@@ -10,16 +10,30 @@ export default class ChatPart extends Component{
         this.state = {
             buffer:"",
             messages:[],
+
             client:socket()
         };
     }
 
+
     componentDidMount(){
         const {client} = this.state;
         client.receiveMessage(this.onReceiveMessage);
+        client.joinRoom(this.props.room);
 
 
     }
+
+    componentWillReceiveProps(nextProps) {
+        const {client} = this.state;
+        if (nextProps.room === this.props.room){
+            return;
+        }
+        client.joinRoom(nextProps.room);
+        this.setState({messages:[]});
+    }
+
+
 
     onReceiveMessage =(message) =>{
         const {messages} = this.state;
@@ -38,11 +52,18 @@ export default class ChatPart extends Component{
             time: moment().format("h:mm a")
         });
         this.setState({buffer:""});
-    }
+    };
 
     onInputChange = (e) =>{
         this.setState ({buffer:e.target.value});
-    }
+    };
+
+    keyPressHandler = (e) =>{
+        
+        if (e.keyCode ? e.keyCode : e.which === 13){
+            this.sendMessage();
+        }
+    };
 
 
 
@@ -68,7 +89,7 @@ export default class ChatPart extends Component{
 
                 </div>
                 <div className="input-area" >
-                    <Input onChange={this.onInputChange} value={buffer}/><Button type="primary" onClick={this.sendMessage}>Send</Button>
+                    <Input onChange={this.onInputChange} value={buffer} onKeyPress={this.keyPressHandler}/><Button type="primary" onClick={this.sendMessage}>Send</Button>
                 </div>
             </div>
 

@@ -11,12 +11,15 @@ class ChatApp extends Component {
   constructor(props){
     super(props);
     this.state ={
-      client:socket(),
-      message:"",
-      receive:"",
+        currentRoom:"general",
       
     }
   }
+
+  switchRoom = (room) =>{
+
+      this.setState({currentRoom:room});
+  };
 
   render() {
     const {rooms} = this.state;
@@ -24,11 +27,11 @@ class ChatApp extends Component {
     return (
       <Row className="app-row">
         <Col className="menu-area" span={4}>
-          <ChatMenu name={this.props.name}/>
+          <ChatMenu name={this.props.name} switch={this.switchRoom}/>
         </Col>
 
         <Col className="chat-area" span={20}>
-          <ChatPart name={this.props.name}/>
+          <ChatPart name={this.props.name} room={this.state.currentRoom}/>
         </Col>
 
         
